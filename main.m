@@ -68,6 +68,8 @@ int main (int argc, char *argv[])
 				GSPrintf(stdout, @"Shutting down server.\n");
 				quittingSince = [NSDate date];
 			}
+			fflush(stdout);
+			fflush(stderr);
 			if ([handler isQuitting] && [quittingSince timeIntervalSinceNow] < -30.0f)
 			  {
 					// If shutting down existing connections took more than 30 seconds,

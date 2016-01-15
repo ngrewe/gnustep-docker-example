@@ -6,7 +6,7 @@ running a headless Objective-C application (in this case: a small web server).
 This is more an exercise in demonstrating the general concept: Having
 deterministically built images with development tools and runtime dependencies
 and coordinating them to deploy the compiled artifact with minimal cruft. The
-build scripts for the base images are available in the 
+build scripts for the base images are available in the
 [gnustep-boxes](https://www.github.com/ngrewe/gnustep-boxes) project.
 
 How it works
@@ -25,9 +25,9 @@ How it works
    into the correct location in the filesystem.
 5. Run a container based on that image as usual:
    ```
-   docker run -p 8080:8080 my/useless-thing
+   docker run --rm -p 8080:8080 my/useless-thing
    ```
-6. Enter 127.0.0.1:8080 in your browser and be greeted by ‘Hello World’.
+6. Point your browser at the docker host's IP at port 8080 and be greeted by ‘Hello World’.
 
 
 What it does
@@ -36,6 +36,8 @@ What it does
 Honestly? Not much. It just responds to a GET request with a static string. It
 demonstrates, however, how to handle requests asynchronously using
 libdispatch.
+
+
 
 License
 --------

@@ -128,6 +128,7 @@ static NSDateFormatter *_formatter;
   dispatch_queue_t queue =
     dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   dispatch_async(queue, ^{
+    GSRegisterCurrentThread();
     NSString *method = [[request headerNamed: @"x-http-method"] value];
     if ([method caseInsensitiveCompare: @"GET"] == NSOrderedSame)
       {
@@ -148,6 +149,7 @@ static NSDateFormatter *_formatter;
       }
     // After we are done processing the request, hand it back to the server
     [http completedWithResponse: response];
+    GSUnregisterCurrentThread();
   });
   /* Return value no indicates that we are processing asynchronously */
   return NO;
