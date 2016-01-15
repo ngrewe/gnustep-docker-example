@@ -9,7 +9,7 @@ STAGEDIR=$PWD/stage
 
 mkdir -p $WS_STAGEDIR/usr/local/lib
 mkdir -p $WS_STAGEDIR/usr/local/include
-mkdir -p $WS_STAGEDIR/stage/usr/local/bin
+mkdir -p $WS_STAGEDIR/usr/local/bin
 mkdir -p $STAGEDIR
 
 export CPATH=$WS_STAGEDIR/usr/local/include:$CPATH
