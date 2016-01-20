@@ -113,7 +113,6 @@ static NSDateFormatter *_formatter;
    */
   [server setAddress: nil port: nil secure: nil];
   _quitting = YES;
-  GSPrintf(stdout, @"Stopped listening. Will quit now\n");
 }
 
 - (BOOL) processRequest: (WebServerRequest*)request
@@ -155,18 +154,23 @@ static NSDateFormatter *_formatter;
   return NO;
 }
 
+- (void) _log: (NSString*)message level: (NSString*)level
+{
+  GSPrintf(stdout, @"%@/%@ %@ -- %@\n", level, NSStringFromClass([self class]), 
+	  STR_NOW, message);
+}
+
 - (void) webAlert: (NSString*)message for: (WebServer*)http
 {
-  GSPrintf(stderr, @"%@: %@\n", STR_NOW, message);
+  [self _log: message level: @"W"];
 }
 
 - (void) webAudit: (NSString*)message for: (WebServer*)http
 {
   GSPrintf(stdout, @"%@\n", message);
 }
-
 - (void) webLog: (NSString*)message for: (WebServer*)http
 {
-  GSPrintf(stdout, @"%@: %@\n", STR_NOW, message);
+  [self _log: message level: @"D"];
 }
 @end

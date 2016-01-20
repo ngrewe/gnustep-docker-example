@@ -7,7 +7,7 @@
  */
 
 #import <Foundation/Foundation.h>
-
+@class WebServer;
 @interface Handler : NSObject
 @property (nonatomic,readonly,getter=isQuitting) BOOL quitting;
 @property (nonatomic,readonly,getter=isDone) BOOL done;
@@ -16,4 +16,9 @@
  * Go into shutdown, closing currently active connections.
  */
 - (void)quit;
+
+/**
+ * Logging method.
+ */
+- (void)webLog: (NSString*)msg for: (WebServer*)server;
 @end

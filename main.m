@@ -47,6 +47,7 @@ int main (int argc, char *argv[])
 			GSPrintf(stderr, @"Could not create web-server\n");
 			return 2;
 		}
+		[handler webLog: @"Starting WebServer" for: nil];
 		/*
 		 * And run the runloop until done.
 		 */
@@ -64,8 +65,8 @@ int main (int argc, char *argv[])
 			if ((_sigterm_recv > 0) && ![handler isQuitting])
 			{
 				/* We have received SIGTERM, and should quit now */
+				[handler webLog: @"Shutting down WebServer" for: nil];
 				[handler quit];
-				GSPrintf(stdout, @"Shutting down server.\n");
 				quittingSince = [NSDate date];
 			}
 			fflush(stdout);
