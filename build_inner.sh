@@ -16,7 +16,7 @@ export CPATH=$WS_STAGEDIR/usr/local/include:$CPATH
 export LIBRARY_PATH=$WS_STAGEDIR/usr/local/lib:$LIBRARY_PATH
 export LD_LIBRARY_PATH=$WS_STAGEDIR//usr/local/lib:$LD_LIBRARY_PATH
 if [ ! -d performance ]; then
-  svn export http://svn.gna.org/svn/gnustep/libs/performance/tags/performance-0_5_0/ performance
+  git clone https://github.com/gnustep/libs-performance performance
 fi
 
 cd performance
@@ -25,7 +25,7 @@ make install DESTDIR=$WS_STAGEDIR
 cd ..
 
 if [ ! -d webserver ]; then
-    svn export http://svn.gna.org/svn/gnustep/libs/webserver/trunk webserver
+    git clone https://github.com/gnustep/libs-webserver webserver
 fi
 cd webserver
 make
